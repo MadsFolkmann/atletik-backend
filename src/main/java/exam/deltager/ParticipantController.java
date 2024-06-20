@@ -48,5 +48,10 @@ public class ParticipantController {
         List<ParticipantResponseDTO> participants = participantService.getAllParticipants();
         return ResponseEntity.ok(participants);
     }
-}
 
+    @GetMapping("/search")
+    public ResponseEntity<List<ParticipantResponseDTO>> searchParticipants(@RequestParam String name) {
+        List<ParticipantResponseDTO> participants = participantService.searchParticipantsByName(name);
+        return ResponseEntity.ok(participants);
+    }
+}

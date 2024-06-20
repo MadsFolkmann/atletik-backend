@@ -1,5 +1,6 @@
 package exam.resultat;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,8 +19,7 @@ public class ResultController {
     @PostMapping
     public ResponseEntity<ResultResponseDTO> createResult(@RequestBody ResultRequestDTO resultRequestDTO) {
         ResultResponseDTO createdResult = resultService.createResult(resultRequestDTO);
-        return ResponseEntity.ok(createdResult);
-    }
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdResult);    }
 
     @GetMapping("/{id}")
     public ResponseEntity<ResultResponseDTO> getResultById(@PathVariable Long id) {
@@ -42,6 +42,12 @@ public class ResultController {
     @GetMapping
     public ResponseEntity<List<ResultResponseDTO>> getAllResults() {
         List<ResultResponseDTO> results = resultService.getAllResults();
+        return ResponseEntity.ok(results);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<ResultResponseDTO>> searchResultsByParticipantName(@RequestParam String participantName) {
+        List<ResultResponseDTO> results = resultService.searchResultsByParticipantName(participantName);
         return ResponseEntity.ok(results);
     }
 }

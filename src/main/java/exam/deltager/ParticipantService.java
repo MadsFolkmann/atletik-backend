@@ -69,6 +69,11 @@ public class ParticipantService {
         return participants.stream().map(this::toParticipantResponseDTO).collect(Collectors.toList());
     }
 
+    public List<ParticipantResponseDTO> searchParticipantsByName(String name) {
+        List<Participant> participants = participantRepository.findByNameContainingIgnoreCase(name);
+        return participants.stream().map(this::toParticipantResponseDTO).collect(Collectors.toList());
+    }
+
     private ParticipantResponseDTO toParticipantResponseDTO(Participant participant) {
         return new ParticipantResponseDTO(
                 participant.getId(),
