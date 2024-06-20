@@ -1,5 +1,6 @@
 package exam.disciplin;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public class DisciplineController {
     @PostMapping
     public ResponseEntity<DisciplineResponseDTO> createDiscipline(@RequestBody DisciplineRequestDTO disciplineRequestDTO) {
         DisciplineResponseDTO createdDiscipline = disciplineService.createDiscipline(disciplineRequestDTO);
-        return ResponseEntity.ok(createdDiscipline);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdDiscipline);
     }
 
     @GetMapping("/{id}")
