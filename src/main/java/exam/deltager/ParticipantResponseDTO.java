@@ -22,4 +22,17 @@ public class ParticipantResponseDTO {
     private String club;
     private List<DisciplineResponseDTO> disciplines;
     private List<ResultResponseDTO> results;
+
+    @Override
+    public String toString() {
+        return "ParticipantResponseDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", gender=" + gender +
+                ", age=" + age +
+                ", club='" + club + '\'' +
+                ", disciplines=" + disciplines +
+                ", results=" + results +
+                '}';
+    }
 }

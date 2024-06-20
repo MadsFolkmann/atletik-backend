@@ -11,21 +11,19 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 @Service
 @Transactional
 public class ParticipantService {
 
     private final ParticipantRepository participantRepository;
     private final DisciplineRepository disciplineRepository;
-    private final ResultRepository resultRepository;
 
-    public ParticipantService(ParticipantRepository participantRepository, DisciplineRepository disciplineRepository, ResultRepository resultRepository) {
+    public ParticipantService(ParticipantRepository participantRepository, DisciplineRepository disciplineRepository) {
         this.participantRepository = participantRepository;
         this.disciplineRepository = disciplineRepository;
-        this.resultRepository = resultRepository;
     }
 
     public ParticipantResponseDTO createParticipant(ParticipantRequestDTO participantRequestDTO) {
@@ -79,7 +77,7 @@ public class ParticipantService {
                 participant.getAge(),
                 participant.getClub(),
                 participant.getDisciplines().stream().map(this::toDisciplineResponseDTO).collect(Collectors.toList()),
-                participant.getResults().stream().map(this::toResultResponseDTO).collect(Collectors.toList())
+                participant.getResults() != null ? participant.getResults().stream().map(this::toResultResponseDTO).collect(Collectors.toList()) : new ArrayList<>()
         );
     }
 

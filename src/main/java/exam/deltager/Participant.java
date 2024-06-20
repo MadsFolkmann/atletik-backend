@@ -6,6 +6,7 @@ import exam.resultat.Result;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -29,5 +30,5 @@ public class Participant {
     private List<Discipline> disciplines;
 
     @OneToMany(mappedBy = "participant", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Result> results;
+    private List<Result> results = new ArrayList<>();
 }

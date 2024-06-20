@@ -18,4 +18,15 @@ public class ParticipantRequestDTO {
     private int age;
     private String club;
     private List<Long> disciplineIds;
+
+    @Override
+    public String toString() {
+        return "ParticipantRequestDTO{" +
+                "name='" + name + '\'' +
+                ", gender=" + gender +
+                ", age=" + age +
+                ", club='" + club + '\'' +
+                ", disciplineIds=" + disciplineIds +
+                '}';
+    }
 }

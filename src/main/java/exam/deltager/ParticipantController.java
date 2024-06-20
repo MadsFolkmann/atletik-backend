@@ -1,5 +1,6 @@
 package exam.deltager;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +10,7 @@ import java.util.List;
 @RequestMapping("/participants")
 public class ParticipantController {
 
-    private ParticipantService participantService;
+    private final ParticipantService participantService;
 
     public ParticipantController(ParticipantService participantService) {
         this.participantService = participantService;
@@ -17,8 +18,10 @@ public class ParticipantController {
 
     @PostMapping
     public ResponseEntity<ParticipantResponseDTO> createParticipant(@RequestBody ParticipantRequestDTO participantRequestDTO) {
+        System.out.println("Received POST request: " + participantRequestDTO.toString());
         ParticipantResponseDTO createdParticipant = participantService.createParticipant(participantRequestDTO);
-        return ResponseEntity.ok(createdParticipant);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdParticipant);
     }
 
     @GetMapping("/{id}")
@@ -29,6 +32,7 @@ public class ParticipantController {
 
     @PutMapping("/{id}")
     public ResponseEntity<ParticipantResponseDTO> updateParticipant(@PathVariable Long id, @RequestBody ParticipantRequestDTO participantRequestDTO) {
+        System.out.println("Received PUT request: " + participantRequestDTO.toString());
         ParticipantResponseDTO updatedParticipant = participantService.updateParticipant(id, participantRequestDTO);
         return ResponseEntity.ok(updatedParticipant);
     }
@@ -45,3 +49,4 @@ public class ParticipantController {
         return ResponseEntity.ok(participants);
     }
 }
+
