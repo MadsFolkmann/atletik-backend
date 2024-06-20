@@ -12,10 +12,10 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DeltagerRequestDTO {
-    private String navn;
-    private Gender køn;
-    private int alder;
-    private String klub;
-    private List<Long> disciplinIds;
+public class ParticipantRequestDTO {
+    private String name;
+    private Gender gender;
+    private int age;
+    private String club;
+    private List<Long> disciplineIds;
 }

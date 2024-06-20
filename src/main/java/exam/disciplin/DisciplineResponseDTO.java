@@ -1,17 +1,18 @@
 package exam.disciplin;
 
-import exam.enums.ResultatType;
+import exam.enums.ResultType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DisciplinResponseDTO {
+public class DisciplineResponseDTO {
     private Long id;
-    private String navn;
-    private ResultatType resultatType;
+    private String name;
+    private ResultType resultType;
 }

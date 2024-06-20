@@ -1,8 +1,8 @@
 package exam.resultat;
 
-import exam.deltager.Deltager;
-import exam.disciplin.Disciplin;
-import exam.enums.ResultatType;
+import exam.deltager.Participant;
+import exam.disciplin.Discipline;
+import exam.enums.ResultType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,24 +13,24 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Resultat {
+public class Result {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Temporal(TemporalType.DATE)
-    private Date dato;
+    private Date date;
 
     @Enumerated(EnumType.STRING)
-    private ResultatType resultatType;
+    private ResultType resultType;
 
-    private double resultatVærdi;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "disciplin_id")
-    private Disciplin disciplin;
+    private double resultValue;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "deltager_id")
-    private Deltager deltager;
+    @JoinColumn(name = "discipline_id")
+    private Discipline discipline;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "participant_id")
+    private Participant participant;
 }

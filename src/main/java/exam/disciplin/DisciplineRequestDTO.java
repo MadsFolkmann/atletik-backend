@@ -1,6 +1,6 @@
 package exam.disciplin;
 
-import exam.enums.ResultatType;
+import exam.enums.ResultType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
@@ -10,7 +10,7 @@ import lombok.AllArgsConstructor;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DisciplinRequestDTO {
-    private String navn;
-    private ResultatType resultatType;
+public class DisciplineRequestDTO {
+    private String name;
+    private ResultType resultType;
 }
